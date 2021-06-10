@@ -23,7 +23,12 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
-	stout, stderr, err := shell.Execute("reg save HKLM\\SAM sam.hiv")
+	fmt.Println("error", stderr)
+	fmt.Println(stdout)
+	stdout, stderr, err = shell.Execute("reg save HKLM\\SAM sam.hiv")
+	if err != nil {
+		panic(err.Error())
+	}
 	fmt.Println("error", stderr)
 	fmt.Println(stdout)
 }
