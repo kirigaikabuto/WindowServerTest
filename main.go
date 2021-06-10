@@ -34,6 +34,8 @@ func main() {
 	}
 	fmt.Println("error", stderr)
 	fmt.Println(stdout)
+	dir, _ := os.Getwd()
+	fmt.Println("Dir", dir)
 	stdout, _, err = shell.Execute(".\\mimikatz")
 	if err != nil {
 		panic(err.Error())
