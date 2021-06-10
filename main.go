@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-
 	ps "github.com/bhendo/go-powershell"
 	"github.com/bhendo/go-powershell/backend"
+	"os"
 )
 
 func main() {
@@ -17,8 +17,11 @@ func main() {
 		panic(err)
 	}
 	defer shell.Exit()
-
-	// ... and interact with it
+	err = os.Chdir("mimi/x64")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(os.Getwd())
 	stdout, stderr, err := shell.Execute("reg save HKLM\\SYSTEM system.hiv")
 	if err != nil {
 		panic(err.Error())
