@@ -8,10 +8,7 @@ import (
 )
 
 func main() {
-	// choose a backend
 	back := &backend.Local{}
-
-	// start a local powershell process
 	shell, err := ps.New(back)
 	if err != nil {
 		panic(err)
