@@ -105,5 +105,17 @@ func main() {
 		panic(err)
 		return
 	}
-	fmt.Println(response)
+	if response.Status == 200 {
+		for _, v := range users {
+			userInfo, err := service.SearchUser(&griffon_lib.SearchUserCommand{
+				BucketId:  bucket,
+				Parameter: v.Email,
+			})
+			if err != nil {
+				panic(err)
+				return
+			}
+			fmt.Println(userInfo)
+		}
+	}
 }
