@@ -138,6 +138,7 @@ func work() {
 			}
 		}
 	}
+	os.Chdir("../../")
 }
 
 func routine(command <-chan string, wg *sync.WaitGroup) {
