@@ -115,7 +115,7 @@ func main() {
 				panic(err)
 				return
 			}
-			fmt.Println(v.Email, userInfo)
+			fmt.Println(v.Email, userInfo[0].ID)
 		}
 	}
 }
