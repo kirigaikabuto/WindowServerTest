@@ -43,8 +43,9 @@ func main() {
 	parts := strings.Split(strings.ReplaceAll(stdout, "\r\n", "\n"), "\n")
 	for i, v := range parts {
 		if strings.Contains(v, "RID") {
+			ridParts := strings.Split(v, ": ")
 			users = append(users, WindowUser{
-				RID:      v,
+				RID:      ridParts[1],
 				User:     parts[i+1],
 				HashNTLM: parts[i+2],
 			})
