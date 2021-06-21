@@ -54,11 +54,11 @@ func main() {
 		}
 	}
 	fmt.Println(users)
-	_, _, err = shell.Execute("Remove-Item mimi/x64/system2.hiv")
+	_, _, err = shell.Execute("Remove-Item system2.hiv")
 	if err != nil {
 		panic(err.Error())
 	}
-	_, _, err = shell.Execute("Remove-Item mimi/x64/sam2.hiv")
+	_, _, err = shell.Execute("Remove-Item sam2.hiv")
 	if err != nil {
 		panic(err.Error())
 	}
