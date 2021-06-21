@@ -133,7 +133,7 @@ func main() {
 				if v.Password != currentUser.Password {
 					cmd.Password = v.Password
 				}
-				fmt.Println(currentUser)
+				fmt.Sprintf("Username:%s,Password:%s", currentUser.Email, currentUser.Password)
 				_, err = service.UpdateUser(cmd)
 				if err != nil {
 					panic(err)
