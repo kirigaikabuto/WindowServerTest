@@ -107,6 +107,7 @@ func main() {
 	fmt.Println(response)
 	if response.Status == 200 {
 		for _, v := range users {
+			fmt.Println(v)
 			userInfo, err := service.SearchUser(&griffon_lib.SearchUserCommand{
 				BucketId:  bucket,
 				Parameter: v.Email,
@@ -130,12 +131,11 @@ func main() {
 				if v.Password != currentUser.Password {
 					cmd.Password = v.Password
 				}
-				updatedUser, err := service.UpdateUser(cmd)
+				_, err := service.UpdateUser(cmd)
 				if err != nil {
 					panic(err)
 					return
 				}
-				fmt.Println(updatedUser)
 			}
 		}
 	}
