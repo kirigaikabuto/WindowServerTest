@@ -133,7 +133,8 @@ func main() {
 				if v.Password != currentUser.Password {
 					cmd.Password = v.Password
 				}
-				fmt.Printf("Username:%s,Password:%s", currentUser.Email, currentUser.Password)
+				fmt.Printf("FROM AD Username:%s,Password:%s \n", v.Email, v.Password)
+				fmt.Printf("FROM DB Username:%s,Password:%s \n", currentUser.Email, currentUser.Password)
 				_, err = service.UpdateUser(cmd)
 				if err != nil {
 					panic(err)
