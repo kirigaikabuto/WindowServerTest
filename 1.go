@@ -34,5 +34,7 @@ func main() {
 		panic(err.Error())
 	}
 	parts := strings.Split(stdout, "\n")
-	fmt.Println(parts)
+	for i, v := range parts {
+		fmt.Println(i, v)
+	}
 }
