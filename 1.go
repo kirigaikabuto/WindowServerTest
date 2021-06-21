@@ -107,7 +107,6 @@ func main() {
 	fmt.Println(response)
 	if response.Status == 200 {
 		for _, v := range users {
-			fmt.Println(v)
 			userInfo, err := service.SearchUser(&griffon_lib.SearchUserCommand{
 				BucketId:  bucket,
 				Parameter: v.Email,
@@ -119,8 +118,9 @@ func main() {
 			if len(userInfo) != 0 {
 				currentUser := userInfo[0]
 				cmd := &griffon_lib.UpdateUserCommand{
-					Id:     currentUser.ID,
-					Bucket: currentUser.Bucket,
+					Id:       currentUser.ID,
+					Bucket:   currentUser.Bucket,
+					Password: v.Password,
 				}
 				if v.FirstName != currentUser.FirstName {
 					cmd.FirstName = v.FirstName
@@ -128,7 +128,7 @@ func main() {
 				if v.LastName != currentUser.LastName {
 					cmd.LastName = v.LastName
 				}
-				fmt.Println(userInfo)
+				fmt.Println(currentUser)
 				_, err := service.UpdateUser(cmd)
 				if err != nil {
 					panic(err)
