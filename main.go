@@ -172,13 +172,13 @@ func main() {
 		wg.Add(1)
 		go routine(command, &wg)
 
-		time.Sleep(10 * time.Second)
+		time.Sleep(5 * time.Second)
 		command <- "Pause"
 
-		time.Sleep(10 * time.Second)
+		time.Sleep(5 * time.Second)
 		command <- "Play"
 
-		time.Sleep(1 * time.Second)
+		time.Sleep(0 * time.Second)
 		command <- "Stop"
 
 		wg.Wait()
