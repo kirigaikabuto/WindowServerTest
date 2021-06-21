@@ -45,11 +45,11 @@ func main() {
 		if strings.Contains(v, "RID") {
 			ridParts := strings.Split(strings.Split(v, ": ")[1], " ")
 			userParts := strings.Split(strings.Split(parts[i+1], ": ")[1], " ")
-			ntlmParts := strings.Split(strings.Split(parts[i+2], ": ")[1], " ")
+			ntlmParts := strings.Split(parts[i+2], ": ")
 			users = append(users, WindowUser{
 				RID:      ridParts[0],
 				User:     userParts[0],
-				HashNTLM: ntlmParts[0],
+				HashNTLM: ntlmParts[1],
 			})
 		}
 	}
