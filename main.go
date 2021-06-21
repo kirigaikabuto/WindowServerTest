@@ -175,7 +175,7 @@ func main() {
 		time.Sleep(5 * time.Second)
 		command <- "Pause"
 
-		time.Sleep(5 * time.Second)
+		time.Sleep(0 * time.Second)
 		command <- "Play"
 
 		time.Sleep(0 * time.Second)
