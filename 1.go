@@ -49,7 +49,6 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println(stdout)
 	for i, v := range parts {
 		if strings.Contains(v, "RID") {
 			ridParts := strings.Split(strings.Split(v, ": ")[1], " ")
