@@ -128,9 +128,6 @@ func main() {
 				if v.LastName != currentUser.LastName {
 					cmd.LastName = v.LastName
 				}
-				if v.Password != currentUser.Password {
-					cmd.Password = v.Password
-				}
 				_, err := service.UpdateUser(cmd)
 				if err != nil {
 					panic(err)
