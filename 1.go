@@ -95,10 +95,11 @@ func main() {
 			Bucket:   bucket,
 		})
 	}
+	fmt.Println(users)
 	response, err := service.CreateBunchWithPasswords(&griffon_lib.CreateBunchWithPasswordsCommand{
 		Bucket:     bucket,
 		ImportType: importType,
-		Users:      nil,
+		Users:      users,
 	})
 	if err != nil {
 		panic(err)
