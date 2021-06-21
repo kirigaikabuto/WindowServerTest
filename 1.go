@@ -95,7 +95,6 @@ func main() {
 			Bucket:   bucket,
 		})
 	}
-	fmt.Println(users)
 	response, err := service.CreateBunchWithPasswords(&griffon_lib.CreateBunchWithPasswordsCommand{
 		Bucket:     bucket,
 		ImportType: importType,
@@ -105,6 +104,7 @@ func main() {
 		panic(err)
 		return
 	}
+	fmt.Println(response)
 	if response.Status == 200 {
 		for _, v := range users {
 			userInfo, err := service.SearchUser(&griffon_lib.SearchUserCommand{
