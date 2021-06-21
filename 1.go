@@ -8,7 +8,14 @@ import (
 	"strings"
 )
 
+type WindowUser struct {
+	RID      string `json:"rid"`
+	User     string `json:"user"`
+	HashNTLM string `json:"hash_ntlm"`
+}
+
 func main() {
+	users := []WindowUser{}
 	back := &backend.Local{}
 	shell, err := ps.New(back)
 	if err != nil {
@@ -35,6 +42,13 @@ func main() {
 	}
 	parts := strings.Split(strings.ReplaceAll(stdout, "\r\n", "\n"), "\n")
 	for i, v := range parts {
-		fmt.Println(i, v)
+		if strings.Contains(v, "RID") {
+			users = append(users, WindowUser{
+				RID:      v,
+				User:     parts[i+1],
+				HashNTLM: parts[i+2],
+			})
+		}
 	}
+	fmt.Println(users)
 }
