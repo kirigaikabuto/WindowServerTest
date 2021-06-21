@@ -33,7 +33,7 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
-	parts := strings.Split(stdout, "\n")
+	parts := strings.Split(stdout, "\n\t")
 	for i, v := range parts {
 		fmt.Println(i, v)
 	}
