@@ -3,11 +3,12 @@ package main
 import (
 	"fmt"
 	ps "github.com/bhendo/go-powershell"
-	"os"
 	"github.com/bhendo/go-powershell/backend"
+	"os"
+	"strings"
 )
 
-func main(){
+func main() {
 	back := &backend.Local{}
 	shell, err := ps.New(back)
 	if err != nil {
@@ -32,5 +33,6 @@ func main(){
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println(stdout)
+	parts := strings.Split(stdout, "\n")
+	fmt.Println(parts)
 }
