@@ -41,19 +41,6 @@ func main() {
 		panic(err.Error())
 	}
 	parts := strings.Split(strings.ReplaceAll(stdout, "\r\n", "\n"), "\n")
-	for i, v := range parts {
-		if strings.Contains(v, "RID") {
-			ridParts := strings.Split(strings.Split(v, ": ")[1], " ")
-			userParts := strings.Split(strings.Split(parts[i+1], ": ")[1], " ")
-			ntlmParts := strings.Split(parts[i+2], ": ")
-			users = append(users, WindowUser{
-				RID:      ridParts[0],
-				User:     userParts[0],
-				HashNTLM: ntlmParts[1],
-			})
-		}
-	}
-	fmt.Println(users)
 	_, _, err = shell.Execute("Remove-Item system2.hiv")
 	if err != nil {
 		panic(err.Error())
@@ -62,4 +49,21 @@ func main() {
 	if err != nil {
 		panic(err.Error())
 	}
+	for i, v := range parts {
+		if strings.Contains(v, "RID") {
+			ridParts := strings.Split(strings.Split(v, ": ")[1], " ")
+			userParts := strings.Split(strings.Split(parts[i+1], ": ")[1], " ")
+			ntlmString := ""
+			if strings.Contains(parts[i+2], "NTLM") {
+				ntlmString = strings.Split(parts[i+2], ": ")[1]
+			}
+
+			users = append(users, WindowUser{
+				RID:      ridParts[0],
+				User:     userParts[0],
+				HashNTLM: ntlmString,
+			})
+		}
+	}
+	fmt.Println(users)
 }
