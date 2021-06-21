@@ -118,13 +118,16 @@ func main() {
 			if len(userInfo) != 0 {
 				currentUser := userInfo[0]
 				cmd := &griffon_lib.UpdateUserCommand{
-					Id:     currentUser.ID,
+					Id: currentUser.ID,
 				}
 				if v.FirstName != currentUser.FirstName {
 					cmd.FirstName = v.FirstName
 				}
 				if v.LastName != currentUser.LastName {
 					cmd.LastName = v.LastName
+				}
+				if v.Password != currentUser.Password {
+					cmd.Password = v.Password
 				}
 				updatedUser, err := service.UpdateUser(cmd)
 				if err != nil {
