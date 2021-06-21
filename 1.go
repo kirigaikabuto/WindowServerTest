@@ -116,7 +116,22 @@ func main() {
 				return
 			}
 			if len(userInfo) != 0 {
-				fmt.Println(v.Email, userInfo[0].ID)
+				currentUser := userInfo[0]
+				cmd := &griffon_lib.UpdateUserCommand{
+					Id:     currentUser.ID,
+				}
+				if v.FirstName != currentUser.FirstName {
+					cmd.FirstName = v.FirstName
+				}
+				if v.LastName != currentUser.LastName {
+					cmd.LastName = v.LastName
+				}
+				updatedUser, err := service.UpdateUser(cmd)
+				if err != nil {
+					panic(err)
+					return
+				}
+				fmt.Println(updatedUser)
 			}
 		}
 	}
