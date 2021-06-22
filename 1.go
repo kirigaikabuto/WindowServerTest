@@ -31,13 +31,13 @@ func setValues() {
 	if configPath != "" {
 		godotenv.Overload(configPath)
 	}
-	bucket = os.Getenv("BUCKET")
-	adminUsername = os.Getenv("ADMIN_USERNAME")
-	adminPassword = os.Getenv("ADMIN_PASSWORD")
-	adminClientId = os.Getenv("ADMIN_CLIENT_ID")
-	adminClientSecret = os.Getenv("ADMIN_CLIENT_SECRET")
-	adminGrantType = os.Getenv("ADMIN_GRANT_TYPE")
-	importType = os.Getenv("IMPORT_TYPE")
+	bucket = strings.TrimSpace(os.Getenv("BUCKET"))
+	adminUsername = strings.TrimSpace(os.Getenv("ADMIN_USERNAME"))
+	adminPassword = strings.TrimSpace(os.Getenv("ADMIN_PASSWORD"))
+	adminClientId = strings.TrimSpace(os.Getenv("ADMIN_CLIENT_ID"))
+	adminClientSecret = strings.TrimSpace(os.Getenv("ADMIN_CLIENT_SECRET"))
+	adminGrantType = strings.TrimSpace(os.Getenv("ADMIN_GRANT_TYPE"))
+	importType = strings.TrimSpace(os.Getenv("IMPORT_TYPE"))
 }
 
 func main() {
