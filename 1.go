@@ -44,6 +44,7 @@ func main() {
 	setValues()
 	fmt.Println(bucket)
 	fmt.Println(adminGrantType)
+	fmt.Println(adminPassword)
 	windowsUsers := []WindowUser{}
 	back := &backend.Local{}
 	shell, err := ps.New(back)
