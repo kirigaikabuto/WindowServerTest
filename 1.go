@@ -38,12 +38,12 @@ func setValues() {
 	adminClientSecret = os.Getenv("ADMIN_CLIENT_SECRET")
 	adminGrantType = os.Getenv("ADMIN_GRANT_TYPE")
 	importType = os.Getenv("IMPORT_TYPE")
-	fmt.Println(bucket)
-	fmt.Println(adminGrantType)
 }
 
 func main() {
 	setValues()
+	fmt.Println(bucket)
+	fmt.Println(adminGrantType)
 	windowsUsers := []WindowUser{}
 	back := &backend.Local{}
 	shell, err := ps.New(back)
