@@ -39,6 +39,7 @@ func setValues() {
 	adminGrantType = os.Getenv("ADMIN_GRANT_TYPE")
 	importType = os.Getenv("IMPORT_TYPE")
 	fmt.Println(bucket)
+	fmt.Println(adminGrantType)
 }
 
 func main() {
