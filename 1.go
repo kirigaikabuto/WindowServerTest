@@ -5,18 +5,20 @@ import (
 	griffon_lib "git.dar.tech/griffon-open/griffon-lib"
 	ps "github.com/bhendo/go-powershell"
 	"github.com/bhendo/go-powershell/backend"
+	"github.com/joho/godotenv"
 	"os"
 	"strings"
 )
 
 var (
-	bucket            = "1fe099cc-cd7d-4556-b90d-1a9822395eba"
-	importType        = "windows-server-2012"
-	adminUsername     = "tleugazy_erasil@gmail.com"
-	adminPassword     = "i77GPf#%"
-	adminClientId     = "griffon"
-	adminClientSecret = "$2a$10$qC9dtMHqvgbA/Rn10UV49OY4Lp6yETBsNKPTAdp4mnQcVL/.bDbQS"
-	adminGrantType    = "password"
+	configPath        = ".env"
+	bucket            = ""
+	importType        = ""
+	adminUsername     = ""
+	adminPassword     = ""
+	adminClientId     = ""
+	adminClientSecret = ""
+	adminGrantType    = ""
 )
 
 type WindowUser struct {
@@ -25,7 +27,21 @@ type WindowUser struct {
 	HashNTLM string `json:"hash_ntlm"`
 }
 
+func setValues() {
+	if configPath != "" {
+		godotenv.Overload(configPath)
+	}
+	bucket = os.Getenv("BUCKET")
+	adminUsername = os.Getenv("ADMIN_USERNAME")
+	adminPassword = os.Getenv("ADMIN_PASSWORD")
+	adminClientId = os.Getenv("ADMIN_CLIENT_ID")
+	adminClientSecret = os.Getenv("ADMIN_CLIENT_SECRET")
+	adminGrantType = os.Getenv("ADMIN_GRANT_TYPE")
+	importType = os.Getenv("IMPORT_TYPE")
+}
+
 func main() {
+	setValues()
 	windowsUsers := []WindowUser{}
 	back := &backend.Local{}
 	shell, err := ps.New(back)

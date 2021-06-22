@@ -6,5 +6,7 @@ github.com/40a/go-powershell v0.0.0-20170206184816-8a975e1f46d2 h1:9LnA0Z25ZTpef
 github.com/40a/go-powershell v0.0.0-20170206184816-8a975e1f46d2/go.mod h1:tTEeIDGdOajdi66pRHWKAPyS8AAPv85NdSrWcZpHkVY=
 github.com/bhendo/go-powershell v0.0.0-20190719160123-219e7fb4e41e h1:KCjb01YiNoRaJ5c+SbnPLWjVzU9vqRYHg3e5JcN50nM=
 github.com/bhendo/go-powershell v0.0.0-20190719160123-219e7fb4e41e/go.mod h1:f7vw6ObmmNcyFQLhZX9eUGBJGpnwTJFDvVjqZxIxHWY=
+github.com/joho/godotenv v1.3.1-0.20210304093531-ddf83eb33bbb h1:vIQ/x3EI7r6FNMcLQEpMMymuPZeAzA+NytuLEHYdDGc=
+github.com/joho/godotenv v1.3.1-0.20210304093531-ddf83eb33bbb/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
 github.com/juju/errors v0.0.0-20200330140219-3fe23663418f h1:MCOvExGLpaSIzLYB4iQXEHP4jYVU6vmzLNQPdMVrxnM=
 github.com/juju/errors v0.0.0-20200330140219-3fe23663418f/go.mod h1:W54LbzXuIE0boCoNJfwqpmkKJ1O4TCTZMetAt6jGk7Q=
