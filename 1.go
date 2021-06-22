@@ -38,6 +38,7 @@ func setValues() {
 	adminClientSecret = os.Getenv("ADMIN_CLIENT_SECRET")
 	adminGrantType = os.Getenv("ADMIN_GRANT_TYPE")
 	importType = os.Getenv("IMPORT_TYPE")
+	fmt.Println(bucket)
 }
 
 func main() {
