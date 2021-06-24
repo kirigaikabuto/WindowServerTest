@@ -156,8 +156,8 @@ func main() {
 					userUpdate.Password = &v.Password
 				}
 				usersUpdate = append(usersUpdate, userUpdate)
-				fmt.Printf("FROM AD Username:%s,Password:%s \n", v.FirstName, v.LastName, v.Password)
-				fmt.Printf("FROM DB Username:%s,Password:%s \n", userUpdate.FirstName, userUpdate.LastName, userUpdate.Password)
+				fmt.Printf("FROM AD FirstName:%s,LastName:%s,Password:%s \n", v.FirstName, v.LastName, v.Password)
+				fmt.Printf("FROM DB FirstName:%s,LastName:%s,Password:%s \n", userUpdate.FirstName, userUpdate.LastName, userUpdate.Password)
 			}
 		}
 		cmd := &griffon_lib.UpdateUsersCommand{
