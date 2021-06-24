@@ -2,6 +2,8 @@ git.dar.tech/griffon-open/griffon-lib v1.0.1-0.20210620132729-6947e3a2a79c h1:aN
 git.dar.tech/griffon-open/griffon-lib v1.0.1-0.20210620132729-6947e3a2a79c/go.mod h1:eMEpjjg1mrkHC/aINon51Of35NjsDrAfc4kjEfb//KI=
 git.dar.tech/griffon-open/griffon-lib v1.0.1-0.20210621054614-71460c54906b h1:/WIhGQjM3W2+/xGLZIwrY4gMwd4YNdiwxAtTyC4AsaI=
 git.dar.tech/griffon-open/griffon-lib v1.0.1-0.20210621054614-71460c54906b/go.mod h1:eMEpjjg1mrkHC/aINon51Of35NjsDrAfc4kjEfb//KI=
+git.dar.tech/griffon-open/griffon-lib v1.0.1-0.20210624031710-cc0802ea08a1 h1:sH9aYQ1JleVmkxEW1to58G2uCwgW3Gl6yCeTg0BvmOg=
+git.dar.tech/griffon-open/griffon-lib v1.0.1-0.20210624031710-cc0802ea08a1/go.mod h1:eMEpjjg1mrkHC/aINon51Of35NjsDrAfc4kjEfb//KI=
 github.com/40a/go-powershell v0.0.0-20170206184816-8a975e1f46d2 h1:9LnA0Z25ZTpefsrnrn68HcJmYwYHeE1PLluCHjtimCY=
 github.com/40a/go-powershell v0.0.0-20170206184816-8a975e1f46d2/go.mod h1:tTEeIDGdOajdi66pRHWKAPyS8AAPv85NdSrWcZpHkVY=
 github.com/bhendo/go-powershell v0.0.0-20190719160123-219e7fb4e41e h1:KCjb01YiNoRaJ5c+SbnPLWjVzU9vqRYHg3e5JcN50nM=

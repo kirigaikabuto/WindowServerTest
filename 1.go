@@ -125,7 +125,9 @@ func main() {
 	}
 	fmt.Println(response)
 	if response.Status == 200 {
+		usersUpdate := []*griffon_lib.UserUpdate{}
 		for _, v := range users {
+			userUpdate := &griffon_lib.UserUpdate{}
 			searchedUser, err := service.SearchUser(&griffon_lib.SearchUserCommand{
 				BucketId:  bucket,
 				Parameter: v.Email,
@@ -139,28 +141,35 @@ func main() {
 					Bucket: searchedUser[0].Bucket,
 					Id:     searchedUser[0].ID,
 				})
-				cmd := &griffon_lib.UpdateUserCommand{
-					Id:     currentUser.ID,
-					Bucket: currentUser.Bucket,
-				}
-				if v.FirstName != currentUser.FirstName {
-					cmd.FirstName = v.FirstName
-				}
-				if v.LastName != currentUser.LastName {
-					cmd.LastName = v.LastName
-				}
-				if v.Password != currentUser.Password {
-					cmd.Password = v.Password
-				}
-				fmt.Printf("FROM AD Username:%s,Password:%s \n", v.Email, v.Password)
-				fmt.Printf("FROM DB Username:%s,Password:%s \n", currentUser.Email, currentUser.Password)
-				_, err = service.UpdateUser(cmd)
 				if err != nil {
 					panic(err)
 					return
 				}
+				userUpdate.ID = searchedUser[0].ID
+				if v.FirstName != currentUser.FirstName {
+					userUpdate.FirstName = &v.FirstName
+				}
+				if v.LastName != currentUser.LastName {
+					userUpdate.LastName = &v.LastName
+				}
+				if v.Password != currentUser.Password {
+					userUpdate.Password = &v.Password
+				}
+				usersUpdate = append(usersUpdate, userUpdate)
+				fmt.Printf("FROM AD Username:%s,Password:%s \n", v.FirstName, v.LastName, v.Password)
+				fmt.Printf("FROM DB Username:%s,Password:%s \n", userUpdate.FirstName, userUpdate.LastName, userUpdate.Password)
 			}
 		}
+		cmd := &griffon_lib.UpdateUsersCommand{
+			Users:  usersUpdate,
+			Bucket: bucket,
+		}
+		res, err := service.UpdateUsers(cmd)
+		if err != nil {
+			panic(err)
+			return
+		}
+		fmt.Println("update users ", res)
 	}
 	os.Chdir("../../")
 }
