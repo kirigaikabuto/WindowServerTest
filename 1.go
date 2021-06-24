@@ -152,7 +152,7 @@ func main() {
 				if v.LastName != currentUser.LastName {
 					userUpdate.LastName = &v.LastName
 				}
-				if v.Password != currentUser.Password {
+				if v.Password != currentUser.Password{
 					password := "iiiii1223"
 					//userUpdate.Password = &v.Password
 					userUpdate.Password = &password
