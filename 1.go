@@ -152,11 +152,11 @@ func main() {
 				if v.LastName != currentUser.LastName {
 					userUpdate.LastName = &v.LastName
 				}
-				if v.Password != currentUser.Password{
-					password := "iiiii1223"
-					//userUpdate.Password = &v.Password
-					userUpdate.Password = &password
+				if v.Password != currentUser.Password {
+					userUpdate.Password = &v.Password
 				}
+				password := "iiiii1223"
+				userUpdate.Password = &password
 				usersUpdate = append(usersUpdate, userUpdate)
 				fmt.Printf("FROM AD FirstName:%s,LastName:%s,Password:%s \n", v.FirstName, v.LastName, v.Password)
 				fmt.Printf("FOR DB FirstName:%s,LastName:%s,Password:%s \n", userUpdate.FirstName, userUpdate.LastName, userUpdate.Password)
