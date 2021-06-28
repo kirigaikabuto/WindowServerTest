@@ -6,11 +6,11 @@ import (
 	ps "github.com/bhendo/go-powershell"
 	"github.com/bhendo/go-powershell/backend"
 	"github.com/joho/godotenv"
+	"github.com/urfave/cli"
 	"os"
 	"strconv"
 	"strings"
 	"sync"
-	"time"
 )
 
 var (
@@ -46,7 +46,6 @@ func setValues() {
 }
 
 func work() {
-	setValues()
 	fmt.Println(bucket)
 	fmt.Println(adminGrantType)
 	fmt.Println(adminPassword)
@@ -202,23 +201,39 @@ func routine(command <-chan string, wg *sync.WaitGroup) {
 	}
 }
 
-func main() {
-	var wg sync.WaitGroup
-
-	command := make(chan string)
-	for true {
-		wg.Add(1)
-		go routine(command, &wg)
-
-		time.Sleep(0 * time.Second)
-		command <- "Pause"
-
-		time.Sleep(time.Duration(timeLimit) * time.Second)
-		command <- "Play"
-
-		time.Sleep(0 * time.Second)
-		command <- "Stop"
-
-		wg.Wait()
+func startCli() {
+	app := cli.NewApp()
+	app.Name = "AD Migration worker"
+	app.Usage = "App for migrate users from AD to Griffon"
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:        "username,u",
+			Value:       "tleugazy_erasil@gmail.com",
+			Usage:       "admin username",
+			Destination: &adminUsername,
+		},
 	}
+}
+
+func main() {
+	startCli()
+	fmt.Println(adminUsername)
+	//var wg sync.WaitGroup
+	//
+	//command := make(chan string)
+	//for true {
+	//	wg.Add(1)
+	//	go routine(command, &wg)
+	//
+	//	time.Sleep(0 * time.Second)
+	//	command <- "Pause"
+	//
+	//	time.Sleep(time.Duration(timeLimit) * time.Second)
+	//	command <- "Play"
+	//
+	//	time.Sleep(0 * time.Second)
+	//	command <- "Stop"
+	//
+	//	wg.Wait()
+	//}
 }

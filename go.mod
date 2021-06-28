@@ -8,4 +8,5 @@ require (
 	github.com/bhendo/go-powershell v0.0.0-20190719160123-219e7fb4e41e
 	github.com/joho/godotenv v1.3.1-0.20210304093531-ddf83eb33bbb
 	github.com/juju/errors v0.0.0-20200330140219-3fe23663418f // indirect
+	github.com/urfave/cli v1.22.5
 )
