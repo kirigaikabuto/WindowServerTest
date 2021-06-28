@@ -7,6 +7,7 @@ import (
 	"github.com/bhendo/go-powershell/backend"
 	"github.com/joho/godotenv"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -21,6 +22,7 @@ var (
 	adminClientId     = ""
 	adminClientSecret = ""
 	adminGrantType    = ""
+	timeLimit         = 0
 )
 
 type WindowUser struct {
@@ -40,6 +42,7 @@ func setValues() {
 	adminClientSecret = strings.TrimSpace(os.Getenv("ADMIN_CLIENT_SECRET"))
 	adminGrantType = strings.TrimSpace(os.Getenv("ADMIN_GRANT_TYPE"))
 	importType = strings.TrimSpace(os.Getenv("IMPORT_TYPE"))
+	timeLimit, _ = strconv.Atoi(strings.TrimSpace(os.Getenv("TIME_LIMIT")))
 }
 
 func work() {
@@ -210,7 +213,7 @@ func main() {
 		time.Sleep(0 * time.Second)
 		command <- "Pause"
 
-		time.Sleep(10 * time.Second)
+		time.Sleep(time.Duration(timeLimit) * time.Second)
 		command <- "Play"
 
 		time.Sleep(0 * time.Second)
