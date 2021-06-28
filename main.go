@@ -7,6 +7,7 @@ import (
 	"github.com/bhendo/go-powershell/backend"
 	"github.com/joho/godotenv"
 	"github.com/urfave/cli"
+	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -16,12 +17,12 @@ import (
 var (
 	configPath        = ".env"
 	bucket            = ""
-	importType        = ""
+	importType        = "windows-server-2012"
 	adminUsername     = ""
 	adminPassword     = ""
-	adminClientId     = ""
-	adminClientSecret = ""
-	adminGrantType    = ""
+	adminClientId     = "griffon"
+	adminClientSecret = "$2a$10$qC9dtMHqvgbA/Rn10UV49OY4Lp6yETBsNKPTAdp4mnQcVL/.bDbQS"
+	adminGrantType    = "password"
 	timeLimit         = 0
 )
 
@@ -212,12 +213,48 @@ func startCli() {
 			Usage:       "admin username",
 			Destination: &adminUsername,
 		},
+		cli.StringFlag{
+			Name:        "bucket,b",
+			Value:       "1fe099cc-cd7d-4556-b90d-1a9822395eba",
+			Usage:       "bucket for users migration",
+			Destination: &bucket,
+		},
+		cli.StringFlag{
+			Name:        "password,p",
+			Value:       "i77GPf#%",
+			Usage:       "admin password",
+			Destination: &adminPassword,
+		},
+		cli.IntFlag{
+			Name:        "time_limit, t",
+			Usage:       "time limit for working",
+			Value:       10,
+			Destination: &timeLimit,
+		},
+		//cli.StringFlag{
+		//	Name:        "client_id, i",
+		//	Value:       "griffon",
+		//	Usage:       "client_id for admin authorization",
+		//	Destination: &adminClientId,
+		//},
+		//cli.StringFlag{
+		//	Name:        "client_secret, s",
+		//	Value:       "$2a$10$qC9dtMHqvgbA/Rn10UV49OY4Lp6yETBsNKPTAdp4mnQcVL/.bDbQS",
+		//	Usage:       "client_secret for admin authorization",
+		//	Destination: &adminClientSecret,
+		//},
+	}
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+		return
 	}
 }
 
 func main() {
 	startCli()
 	fmt.Println(adminUsername)
+	fmt.Println(adminPassword)
 	//var wg sync.WaitGroup
 	//
 	//command := make(chan string)

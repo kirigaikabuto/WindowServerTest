@@ -6,4 +6,6 @@ one:
 	git commit -m "sdsd"
 	git push
 	go build
-	./windoServerTest.exe -u tleugazy_erasil@gmail.com
+
+build:
+	go build && .\windowServerTest
