@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"time"
 )
 
 var (
@@ -255,22 +256,22 @@ func main() {
 	startCli()
 	fmt.Println(adminUsername)
 	fmt.Println(adminPassword)
-	//var wg sync.WaitGroup
-	//
-	//command := make(chan string)
-	//for true {
-	//	wg.Add(1)
-	//	go routine(command, &wg)
-	//
-	//	time.Sleep(0 * time.Second)
-	//	command <- "Pause"
-	//
-	//	time.Sleep(time.Duration(timeLimit) * time.Second)
-	//	command <- "Play"
-	//
-	//	time.Sleep(0 * time.Second)
-	//	command <- "Stop"
-	//
-	//	wg.Wait()
-	//}
+	var wg sync.WaitGroup
+
+	command := make(chan string)
+	for true {
+		wg.Add(1)
+		go routine(command, &wg)
+
+		time.Sleep(0 * time.Second)
+		command <- "Pause"
+
+		time.Sleep(time.Duration(timeLimit) * time.Second)
+		command <- "Play"
+
+		time.Sleep(0 * time.Second)
+		command <- "Stop"
+
+		wg.Wait()
+	}
 }
