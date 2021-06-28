@@ -254,8 +254,6 @@ func startCli() {
 
 func main() {
 	startCli()
-	fmt.Println(adminUsername)
-	fmt.Println(adminPassword)
 	var wg sync.WaitGroup
 
 	command := make(chan string)
